@@ -35,6 +35,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
         patch :update_profile
       end
     end
+    resources :calendar_imports, only: [:index]
     get 'profile' => 'users#profile', :as => 'profile'
     root 'pages#home'
   end

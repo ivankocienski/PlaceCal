@@ -23,6 +23,7 @@
 
 require("@rails/ujs").start()
 require("turbolinks").start()
+require("channels")
 require("leaflet")
 
 // Mountain View

@@ -60,10 +60,9 @@ module Admin
 
     def import
       begin
-        date = Time.zone.parse(params[:starting_from])
+        EventsImportJob.new(calendar_id: @calendar.id, date: params[:starting_from], user_id: current_user.id).perform_later
 
-        @calendar.import_events(date)
-        flash[:success] = 'The import has completed. See below for details.'
+        flash[:success] = 'Your events are being imported. Results will be available here when it is completed.'
       rescue StandardError => e
         Rails.logger.debug(e)
         Rollbar.error(e)

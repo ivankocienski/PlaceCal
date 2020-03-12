@@ -77,6 +77,7 @@ gem 'seed_migration'
 # Utilities
 gem 'active_link_to'
 gem 'bootsnap', require: false
+gem 'clockwork'
 # Temp fix until https://github.com/jmazzi/crypt_keeper works with Rails 6
 gem 'crypt_keeper', github: 'taylorwilliams/crypt_keeper'
 gem 'enumerize'
@@ -86,10 +87,10 @@ gem 'koala'
 gem 'listen', '~> 3.2.0'
 gem 'oj'
 gem 'paper_trail'
+gem 'redis'
 gem 'rollbar'
 gem 'sendgrid-actionmailer'
 gem 'virtus'
-gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platform: :mri
