@@ -3,7 +3,7 @@
 module Admin
   class SitesController < Admin::ApplicationController
     before_action :set_site, only: %i[update destroy]
-    before_action :set_variables_for_sites_neighbourhoods_selection, only: [:new, :edit]
+    before_action :set_variables_for_sites_neighbourhoods_selection, only: %i[new edit]
 
     def index
       @sites = policy_scope(Site).order(:name)
@@ -37,7 +37,7 @@ module Admin
       if @site.update(permitted_attributes(@site))
         redirect_to admin_sites_path
       else
-        set_variables_for_sites_neighbourhoods_selection
+        set_variables_for_sites_wards_selection
         render 'edit'
       end
     end
@@ -57,7 +57,7 @@ module Admin
       @site = Site.friendly.find(params[:id])
     end
 
-    def set_variables_for_sites_neighbourhoods_selection
+    def set_variables_for_sites_wards_selection
       @all_neighbourhoods = policy_scope(Neighbourhood).order(:name).where(unit: 'ward')
       begin
         set_site
